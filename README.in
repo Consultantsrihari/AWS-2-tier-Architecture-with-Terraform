@@ -1,0 +1,38 @@
+Project Requirements: -
+Create and deploy a 2-tier architecture with a web and database tier using Terraform IaC. Must contain:
+A custom VPC
+2 Public subnets for the Web Server Tier
+2 Private subnets for the Database Tier
+Appropriate route tables
+An EC2 instance with a web server in each public subnet
+1 RDS MySQL instance in the private subnets
+Security groups configured for both the web servers and RDS instance
+2. Use Terraform Cloud with a CLI-driven workflow to manage and validate the deployment.
+
+Resources in the Infrastructure
+To build and deploy a highly available 2-tier architecture with a web and database tier in AWS, the following resources need to be included in the infrastructure:
+
+VPC: — A virtual private cloud to host the entire infrastructure.
+Public Subnets: — Subnets that allow internet access for the web tier, distributed across multiple availability zones.
+Private Subnets: — Subnets that are isolated from the internet for the database tier, ensuring secure data storage.
+Internet Gateway: — A gateway to allow internet access for resources in the public subnets.
+Elastic IP: — Static IP addresses to associate with the NAT Gateway.
+NAT Gateway: — A gateway to allow instances in private subnets to connect to the internet for updates and patches while remaining isolated from inbound internet traffic.
+Public Route Table: — Route table associated with the public subnets, directing internet-bound traffic to the Internet Gateway.
+Private Route Table: — Route table associated with the private subnets, directing internet-bound traffic to the NAT Gateway.
+Route Table Associations: — Associations to link the public route table with public subnets and the private route table with private subnets.
+Web Tier / EC2 Instance Security Group: — Security groups to control inbound and outbound traffic for the web tier EC2 instances.
+EC2 Instances with User Data Script: — EC2 instances running a user data script to install a web server (Apache in this case).
+RDS Instance Security Group: — Security groups to control inbound and outbound traffic for the RDS instance.
+Subnet Group for RDS Instance: — A collection of subnets in different availability zones to provide high availability for the RDS instance.
+RDS Instance: — A managed relational database service to handle database operations for the application.
+Prerequisites
+An AWS account.
+A source code editor to build and edit your infrastructure code. I used Visual Studio Code.
+The Terraform extension installed on VSCode.
+Terraform installed on the CLI of your local computer.
+A Terraform Cloud account.
+Knowledge and understanding of basic terraform commands; terraform fmt , terraform validate, terraform plan, terraform apply, terraform destroy
+
+
+For Full article: https://medium.com/@sriharimalapati/deploying-a-aws-2-tier-architecture-with-terraform-d6d2ded8f581
